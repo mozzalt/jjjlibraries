@@ -88,7 +88,7 @@ class FromMainWindows(QMainWindow):
         self.setWindowTitle('Menubar')
         self.setGeometry(300, 300, 500, 200)
         self.show()
-
+    '''구조 자체는 메뉴바와 유사함'''
     def maketoolbar(self):
         exitAction = QAction(QIcon('./resources/Icon/exit.png'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
