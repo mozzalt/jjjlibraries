@@ -1,5 +1,5 @@
 # import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip, QMainWindow, QAction, qApp
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip, QMainWindow, QAction, QDesktopWidget,qApp
 # from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QFont, QIcon
 
@@ -28,7 +28,15 @@ class ToolGogo(QWidget):
 
         self.setWindowTitle('Tooltips')
         self.setGeometry(300, 300, 300, 200)
+        self.center()
         self.show()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        # self.center()
+        CommonModule.center_Desktop(self)
+        self.move(qr.topLeft())
 
 class FromMainWindows(QMainWindow):
     def __init__(self, whatwant):
@@ -101,4 +109,25 @@ class FromMainWindows(QMainWindow):
 
         self.setWindowTitle('Toolbar')
         self.setGeometry(300, 300, 300, 200)
+        # self.center()
+        CommonModule.center_Desktop(self)
         self.show()
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+
+
+class   CommonModule():
+    def __init__(self):
+        super().__init__()
+
+    def center_Desktop(self):
+        print('Common Module IN')
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
