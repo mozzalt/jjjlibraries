@@ -54,11 +54,18 @@ class FromMainWindows(QMainWindow):
     def MenubarGoGo(self):
         print('Step in MenubarGoGo')
         menulist = ['&File', '&View', '&Option']
-        # self.setWindowIcon(QIcon('./resources/Icon/exit.png'))
+        '''
+            file을 눌렀을때... 아래 하단에 세부 메뉴 뜨게 만드는 것...
+        '''
         exitAction = QAction(QIcon('./resources/Icon/exit.png'), 'Exit',self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit Appication')
         exitAction.triggered.connect(qApp.quit)
+
+        openAction = QAction(QIcon('./resources/Icon/exit.png'), 'Open',self)
+        openAction.setShortcut('Ctrl+O')
+        openAction.setStatusTip('Open File')
+        # openAction.triggered.connect(qApp.file)
 
         self.statusBar()
 
@@ -66,9 +73,11 @@ class FromMainWindows(QMainWindow):
         menubar.setNativeMenuBar(False)
         filemenu = menubar.addMenu('&File')
         filemenu.addAction(exitAction)
+        filemenu.addAction(openAction)
 
         viewmenu = menubar.addMenu(menulist[1])
         optionmenu = menubar.addMenu(menulist[2])
+        ''' TEST'''
 
 
 
