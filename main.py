@@ -5,7 +5,8 @@ import  Instance_new_windows as popwin
 import  Icon_into_application as icongo
 import  quit_BTN as qbtn
 import  qtTestfunc as qtool
-
+# FromMainWindows
+# from qtTestfunc import FromMainWindows, ToolGogo
 
 
 
@@ -17,6 +18,7 @@ if __name__ == '__main__':
     #ex = icongo.Myapp()
     #ex = qbtn.QuitBTN()
     #ex = qTetTool.QuitBTN('quitbtn')
-    ex = qtool.toolgogo('tooltip')
+    #ex = qtool.ToolGogo('tooltip')
+    ex = qtool.FromMainWindows('menugo')
     sys.exit(app.exec_())
 

@@ -1,19 +1,17 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QFont
+# import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip, QMainWindow, QAction, qApp
+# from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtGui import QFont, QIcon
 
-class   toolgogo(QWidget):
-
-    def __init__(self,whatwant):
+class ToolGogo(QWidget):
+    def __init__(self, whatwant):
         super().__init__()
         self.what = whatwant
-
         if self.what == 'tooltip':
-            print('IF ==1 Step IN')
+            print('IF ==tooltip Step IN')
             self.tooltipfunc()
-        elif self.what == 'what':
-            print('Next Time gogo')
+        elif self.what == 'staus':
+            print('IF ==status Step IN')
 
 
     def tooltipfunc(self):
@@ -30,4 +28,50 @@ class   toolgogo(QWidget):
 
         self.setWindowTitle('Tooltips')
         self.setGeometry(300, 300, 300, 200)
+        self.show()
+
+class FromMainWindows(QMainWindow):
+    def __init__(self, whatwant):
+        super().__init__()
+        self.what = whatwant
+        if self.what == 'staus':
+            print('IF ==tooltip Step IN')
+            self.StatusGogo()
+        elif self.what == 'menugo':
+            print('IF ==status Step IN')
+            self.MenubarGoGo()
+
+    def StatusGogo(self):
+        print('Step in ShowStatus')
+        self.statusBar().showMessage('Ready')
+
+        QToolTip.setFont(QFont('SansSerif', 10))
+        self.setToolTip('This is a <b>QMainWindows</b> ToolTips')
+        self.setWindowTitle('Statusbar')
+        self.setGeometry(300, 300, 300, 200)
+        self.show()
+
+    def MenubarGoGo(self):
+        print('Step in MenubarGoGo')
+        menulist = ['&File', '&View', '&Option']
+        # self.setWindowIcon(QIcon('./resources/Icon/exit.png'))
+        exitAction = QAction(QIcon('./resources/Icon/exit.png'), 'Exit',self)
+        exitAction.setShortcut('Ctrl+Q')
+        exitAction.setStatusTip('Exit Appication')
+        exitAction.triggered.connect(qApp.quit)
+
+        self.statusBar()
+
+        menubar = self.menuBar()
+        menubar.setNativeMenuBar(False)
+        filemenu = menubar.addMenu('&File')
+        filemenu.addAction(exitAction)
+
+        viewmenu = menubar.addMenu(menulist[1])
+        optionmenu = menubar.addMenu(menulist[2])
+
+
+
+        self.setWindowTitle('Menubar')
+        self.setGeometry(300, 300, 500, 200)
         self.show()
