@@ -40,6 +40,10 @@ class FromMainWindows(QMainWindow):
         elif self.what == 'menugo':
             print('IF ==status Step IN')
             self.MenubarGoGo()
+        elif self.what == 'toolbargo':
+            print('IF ==toolbar Step IN')
+            self.maketoolbar()
+
 
     def StatusGogo(self):
         print('Step in ShowStatus')
@@ -83,4 +87,18 @@ class FromMainWindows(QMainWindow):
 
         self.setWindowTitle('Menubar')
         self.setGeometry(300, 300, 500, 200)
+        self.show()
+
+    def maketoolbar(self):
+        exitAction = QAction(QIcon('./resources/Icon/exit.png'), 'Exit', self)
+        exitAction.setShortcut('Ctrl+Q')
+        exitAction.setStatusTip('Exit application')
+        exitAction.triggered.connect(qApp.quit)
+
+        self.statusBar()
+        self.toolbar = self.addToolBar('Exit')
+        self.toolbar.addAction(exitAction)
+
+        self.setWindowTitle('Toolbar')
+        self.setGeometry(300, 300, 300, 200)
         self.show()

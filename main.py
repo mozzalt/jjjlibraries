@@ -19,6 +19,7 @@ if __name__ == '__main__':
     #ex = qbtn.QuitBTN()
     #ex = qTetTool.QuitBTN('quitbtn')
     #ex = qtool.ToolGogo('tooltip')
-    ex = qtool.FromMainWindows('menugo')
+    # ex = qtool.FromMainWindows('menugo')
+    ex = qtool.FromMainWindows('toolbargo')
     sys.exit(app.exec_())
 
