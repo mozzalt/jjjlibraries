@@ -12,6 +12,9 @@ class ToolGogo(QWidget):
             self.tooltipfunc()
         elif self.what == 'staus':
             print('IF ==status Step IN')
+        elif self.what == 'stylego':
+            print('IF ==setStyle Step IN')
+            self.designStyle()
 
 
     def tooltipfunc(self):
@@ -28,15 +31,48 @@ class ToolGogo(QWidget):
 
         self.setWindowTitle('Tooltips')
         self.setGeometry(300, 300, 300, 200)
-        self.center()
-        self.show()
-
+        # self.center()
+        CommonModule.center_Desktop()
+    '''    
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         # self.center()
         CommonModule.center_Desktop(self)
         self.move(qr.topLeft())
+    '''
+    def designStyle(self):
+
+        from PyQt5.QtWidgets import QLabel, QVBoxLayout
+        print("In DesignStyle func")
+
+        lbl_red = QLabel('Red')
+        lbl_green= QLabel('Green')
+        lbl_blue = QLabel('Blue')
+
+        lbl_red.setStyleSheet("color: red;"
+                              "border-style: solid;"
+                              "border-width: 6px;"
+                              "border-color: #FA8072;"
+                              "border-radius: 3px")
+
+        lbl_green.setStyleSheet("color: green;"
+                              "background-color: #7FFFD4")
+        lbl_blue.setStyleSheet("color: blue;"
+                               "background-color: #87CEFA;"
+                               "border-style: dashed;"
+                               "border-width: 4px;"
+                               "border-color: #1E90FF;"
+                                "border-radius: 6px")
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(lbl_red)
+        vbox.addWidget(lbl_green)
+        vbox.addWidget(lbl_blue)
+        self.setLayout(vbox)
+        self.setWindowTitle('Stylesheet')
+        self.setGeometry(300, 300, 300, 200)
+        self.show()
 
 class FromMainWindows(QMainWindow):
     def __init__(self, whatwant):
