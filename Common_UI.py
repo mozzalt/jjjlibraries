@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QDesktopWidget
 
 class   CommonModule():
     def __init__(self):
+        print("Common 생성자")
         super().__init__()
 
     def center_Desktop(self):

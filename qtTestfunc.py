@@ -2,6 +2,7 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip, QMainWindow, QAction, QDesktopWidget,qApp
 # from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QFont, QIcon
+import Common_UI as commonUI
 
 class ToolGogo(QWidget):
     def __init__(self, whatwant):
@@ -32,15 +33,17 @@ class ToolGogo(QWidget):
         self.setWindowTitle('Tooltips')
         self.setGeometry(300, 300, 300, 200)
         # self.center()
-        CommonModule.center_Desktop()
-    '''    
+        # commonUI.center_Desktop(self)
+        CommonModule.center_Desktop(self)
+        self.show()
+
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         # self.center()
         CommonModule.center_Desktop(self)
         self.move(qr.topLeft())
-    '''
+
     def designStyle(self):
 
         from PyQt5.QtWidgets import QLabel, QVBoxLayout
@@ -157,7 +160,7 @@ class FromMainWindows(QMainWindow):
 
 
 
-class   CommonModule():
+class   CommonModule(QWidget):
     def __init__(self):
         super().__init__()
 
