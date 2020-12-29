@@ -1,13 +1,12 @@
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import QCheckBox
 from PyQt5.QtCore import Qt
-import Common_UI as comUI
-
+# import Common_UI as comUI
 class WidgetBasic(QWidget):
-    def __init__(self,what):
-        super().__init__()
 
-        if what=='btntest':
+    def __init__(self, what):
+        super().__init__()
+        if what == 'btntest':
             self.pushbtn_test()
         elif what == 'lbltest':
             self.label_test()
@@ -28,12 +27,10 @@ class WidgetBasic(QWidget):
         elif what == 'groupbox':
             self.group_box_test()
 
-
-
     def pushbtn_test(self):
         from PyQt5.QtWidgets import QPushButton, QVBoxLayout
         '''Button1이 쓰여질 문구이고 &는 단축키 활성화, & 바로 뒷문자가 Alt+ 해당문자, self는 버튼을 품을 Parents'''
-        btn1 = QPushButton('Button&1',self)
+        btn1 = QPushButton('Button&1', self)
         '''setCheckable()을 True로 설정해주면, 선택되거나 선택되지 않은 상태를 유지할 수 있게 됩니다.'''
         btn1.setCheckable(True)
         '''toggle() 메서드를 호출하면 버튼의 상태가 바뀌게 됩니다. 따라서 이 버튼은 프로그램이 시작될 때 선택되어 있습니다.'''
@@ -52,9 +49,6 @@ class WidgetBasic(QWidget):
         vbox.addWidget(btn3)
 
         self.setLayout(vbox)
-
-
-
         self.setWindowTitle('QPushButton')
         self.setGeometry(300, 300, 300, 200)
         # comUI.CommonModule()
@@ -62,7 +56,7 @@ class WidgetBasic(QWidget):
 
     def label_test(self):
         from PyQt5.QtWidgets import QLabel, QVBoxLayout
-        from PyQt5.QtCore   import Qt
+        from PyQt5.QtCore import Qt
         label1 = QLabel('First Label', self)
         '''Qt.AlignCenter로 설정해주면 수평, 수직 방향 모두 가운데 위치'''
         label1.setAlignment(Qt.AlignCenter)
@@ -95,8 +89,8 @@ class WidgetBasic(QWidget):
 
     def checkbox_test(self):
 
-        self.cb = QCheckBox('Cehcked',self)
-        self.cb.move(130,130)
+        self.cb = QCheckBox('Cehcked', self)
+        self.cb.move(130, 130)
 
         # cb.setAlignment(Qt.AlignCenter)
         self.cb.toggle()
@@ -125,16 +119,13 @@ class WidgetBasic(QWidget):
             ''' 아... 해당 변수를 self.XX 로 선언하면 가져올 수 있네...'''
             self.cb.setText('Checked')
             self.cb.adjustSize()
-
-
-
         else:
             print('UnCehcked----')
             self.setWindowTitle(' ')
             self.cb.setText('UnChecked')
             self.cb.adjustSize()
 
-    def chage_TXT(self,jjjcb):
+    def chage_TXT(self, jjjcb):
         print('In Change_TXT Func')
         jjjcb.setText('ttt')
         '''
@@ -147,7 +138,7 @@ class WidgetBasic(QWidget):
 
     def radio_btn_test(self):
         from PyQt5.QtWidgets import QRadioButton
-        rbtn1  = QRadioButton('First Button', self)
+        rbtn1 = QRadioButton('First Button', self)
         rbtn1.move(50, 50)
         rbtn1.setChecked(True)
 
@@ -161,46 +152,34 @@ class WidgetBasic(QWidget):
 
     def combo_test(self):
         from PyQt5.QtWidgets import QLabel, QComboBox
-        self.label_from_combo = QLabel('Label from Combo',self)
-        self.label_from_combo.move(100,300)
-        cb1=QComboBox(self)
-
-
+        self.label_from_combo = QLabel('Label from Combo', self)
+        self.label_from_combo.move(100, 300)
+        cb1 = QComboBox(self)
         cb1.addItem('Opqtion1')
         cb1.addItem('Opqtion2')
         cb1.addItem('Opqtion3')
         cb1.addItem('Opqtion4')
-        cb1.move(150,100)
+        cb1.move(150, 100)
 
         cb1.activated[str].connect(self.combochage)
-
-
-
         # self.label_combo('JJJ')
         self.setGeometry(300, 300, 600, 400)
         self.setWindowTitle('QRadioButton')
         self.show()
 
-    def combochage(self,combo_txt):
+    def combochage(self, combo_txt):
         self.label_from_combo.setText(combo_txt)
         self.label_from_combo.adjustSize()
 
-
-
     def line_edit_test(self):
         from PyQt5.QtWidgets import QLabel, QLineEdit
-
-        self.label_from_lineedit=QLabel('JJJ',self)
-        self.label_from_lineedit.move(200,100)
-
-        lines=QLineEdit(self)
-        lines.move(200,150)
+        self.label_from_lineedit = QLabel('JJJ', self)
+        self.label_from_lineedit.move(200, 100)
+        lines = QLineEdit(self)
+        lines.move(200, 150)
         lines.setEchoMode(QLineEdit.Password)
         lines.textChanged[str].connect(self.changed_lineEdit)
         # lines.returnPressed.connect(self.changed_lineEdit)
-
-
-
         self.setGeometry(300, 300, 600, 400)
         self.setWindowTitle('Qline_edit_test')
         self.show()
@@ -212,29 +191,24 @@ class WidgetBasic(QWidget):
     def progress_test(self):
         from PyQt5.QtWidgets import QPushButton, QProgressBar
         from PyQt5.QtCore import QBasicTimer
-
-        self.pbar=QProgressBar(self)
-        self.pbar.setGeometry(50,50,300,30)
-
-        self.startbtn=QPushButton('Start',self)
-        self.startbtn.move(50,100)
+        self.pbar = QProgressBar(self)
+        self.pbar.setGeometry(50, 50, 300, 30)
+        self.startbtn = QPushButton('Start', self)
+        self.startbtn.move(50, 100)
         self.startbtn.clicked.connect(self.goProgressbar)
-
-        self.resetbtn=QPushButton('Reset',self)
-        self.resetbtn.move(200,100)
+        self.resetbtn = QPushButton('Reset', self)
+        self.resetbtn.move(200, 100)
         self.resetbtn.clicked.connect(self.resetProgressbar)
-
         self.timer = QBasicTimer()
-        self.step =0
-
+        self.step = 0
         self.setWindowTitle('QProgressBar')
-        self.setGeometry(300,300,600,400)
+        self.setGeometry(300, 300, 600, 400)
         self.show()
 
     ''' Important ... progressbar Show...'''
     def timerEvent(self, e):
         print('timeEvent is Called')
-        if self.step >=100:
+        if self.step >= 100:
             self.timer.stop()
             self.startbtn.setText('Finished')
             return
@@ -247,63 +221,54 @@ class WidgetBasic(QWidget):
             print('Timer is Active')
             self.timer.stop()
             self.startbtn.setText('Start')
-        else :
+        else:
             print('Timer is DeActive')
-            self.timer.start(100,self)
+            self.timer.start(100, self)
             self.startbtn.setText('Stop')
 
     def resetProgressbar(self):
         # self.timer.stop()
-        self.timer.start(100,self)
+        self.timer.start(100, self)
         self.step = 0
         self.startbtn.setText('Stop')
-
 
     def slide_digal_test(self):
         from PyQt5.QtWidgets import QSlider, QPushButton, QDial
         from PyQt5.QtCore import Qt
 
-        self.slider = QSlider(Qt.Horizontal,self)
-        self.slider.move(100,100)
-        self.slider.setRange(0,300)
+        self.slider = QSlider(Qt.Horizontal, self)
+        self.slider.move(100, 100)
+        self.slider.setRange(0, 300)
         self.slider.setSingleStep(10)
 
         self.dial = QDial(self)
-        self.dial.move(100,200)
+        self.dial.move(100, 200)
         self.dial.setRange(0, 300)
 
-        btn = QPushButton('Default',self)
-        btn.move(105,340)
+        btn = QPushButton('Default', self)
+        btn.move(105, 340)
         btn.clicked.connect(self.set_def_dial_slide)
 
         ''' JJJ Tip... Connect에... 함수연결이아닌 직접 값을 Assign 해서 해결하네...'''
         self.slider.valueChanged.connect(self.dial.setValue)
         self.dial.valueChanged.connect(self.slider.setValue)
-
-
-
         self.setWindowTitle('Slide and Dial')
-        self.setGeometry(300,300,600,400)
+        self.setGeometry(300, 300, 600, 400)
         self.show()
 
     def set_def_dial_slide(self):
         self.slider.setValue(0)
         self.dial.setValue(0)
 
-
     def split_test(self):
-
         from PyQt5.QtWidgets import QHBoxLayout, QFrame, QSplitter
         from PyQt5.QtCore import Qt
-
         hbox = QHBoxLayout()
 
         ''' 4개의 Frame으로 만들기...'''
 
         top = QFrame()
         top.setFrameShape(QFrame.Box)
-
-
         midleft =  QFrame()
         midleft.setFrameShape(QFrame.StyledPanel)
         midleft.adjustSize()
@@ -336,7 +301,6 @@ class WidgetBasic(QWidget):
         self.setWindowTitle('Split Test Gogo')
         self.show()
 
-
     def group_box_test(self):
         from PyQt5.QtWidgets import (QGroupBox, QRadioButton, QCheckBox, QPushButton, QMenu, QGridLayout, QVBoxLayout)
 
@@ -352,7 +316,6 @@ class WidgetBasic(QWidget):
         self.setGeometry(300, 300, 600, 400)
         self.setWindowTitle('group_box_test Test Gogo')
         self.show()
-
 
     def createFirstExclusiveGroup(self):
         from PyQt5.QtWidgets import QGroupBox, QRadioButton, QVBoxLayout
@@ -445,3 +408,4 @@ class WidgetBasic(QWidget):
         groupbox.setLayout(vbox)
 
         return groupbox
+    
