@@ -33,8 +33,8 @@ if __name__ == '__main__':
     # ex = wTest.WidgetBasic('combotest')
     # ex = wTest.WidgetBasic('linedit')
     # ex = wTest.WidgetBasic('progress')
-    ex = wTest.WidgetBasic('slide')
-
-
+    # ex = wTest.WidgetBasic('slide')
+    # ex = wTest.WidgetBasic('split')
+    ex = wTest.WidgetBasic('groupbox')
     sys.exit(app.exec_())
 
