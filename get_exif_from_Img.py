@@ -32,7 +32,7 @@ class Get_Exif_from_Img (QWidget):
 
     def simple_UI(self):
         # 전체 몸통....
-
+        # ...K
         self.img_path = ''
 
         mainlayout = QVBoxLayout ()
