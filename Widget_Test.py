@@ -46,9 +46,6 @@ class WidgetBasic(QWidget):
         vbox.addWidget(btn3)
 
         self.setLayout(vbox)
-
-
-
         self.setWindowTitle('QPushButton')
         self.setGeometry(300, 300, 300, 200)
         # comUI.CommonModule()
@@ -119,9 +116,6 @@ class WidgetBasic(QWidget):
             ''' 아... 해당 변수를 self.XX 로 선언하면 가져올 수 있네...'''
             self.cb.setText('Checked')
             self.cb.adjustSize()
-
-
-
         else:
             print('UnCehcked----')
             self.setWindowTitle(' ')

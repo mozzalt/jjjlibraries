@@ -7,6 +7,7 @@ import  quit_BTN as qbtn
 import  qtTestfunc as qtool
 import Layout_Test as laytest
 import Widget_Test as wTest
+import get_exif_from_Img as EXIF
 # FromMainWindows
 # from qtTestfunc import FromMainWindows, ToolGogo
 
@@ -33,7 +34,10 @@ if __name__ == '__main__':
     # ex = wTest.WidgetBasic('combotest')
     # ex = wTest.WidgetBasic('linedit')
     # ex = wTest.WidgetBasic('progress')
-    ex = wTest.WidgetBasic('slide')
+    # gFileInfo = ("File Name", "Shape", "Size", "Date", "Entropy", "Channel", "Exif", "GPS", "Stat")
+    # print(len(gFileInfo))   # ...." " 갯수인 9개가 출력됨
+    # ex = wTest.WidgetBasic('slide')
+    ex = EXIF.Get_Exif_from_Img()
 
 
     sys.exit(app.exec_())
